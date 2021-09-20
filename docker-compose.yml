@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  fxserver:
+    container_name: fivem
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: on-failure
+    stdin_open: true
+    tty: true
+    ports:
+      - "30120:30120"
+      - "30120:30120/udp"
+    volumes:
+      - "./resources:/config"
+    environment:
+      LICENSE_KEY: ${SV_LICENSE_KEY}
